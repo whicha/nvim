@@ -3,7 +3,12 @@ local nvlsp = require "nvchad.configs.lspconfig"
 
 ---@type lspconfig.Config
 local default_lspconfig_setup_options = {
-  on_attach = nvlsp.on_attach,
+  on_attach = function(client, bufnr)
+    nvlsp.on_attach(client, bufnr)
+    if client.supports_method("textDocument/inlayHint", { bufnr = bufnr }) then
+      vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+    end
+  end,
   on_init = nvlsp.on_init,
   capabilities = nvlsp.capabilities,
 }
@@ -18,6 +23,10 @@ local lua_ls = function()
       workspace = {
         maxPreload = 1000000,
         preloadFileSize = 10000,
+      },
+      hint = {
+        enable = true,
+        paramName = "Literal",
       },
     },
   }
