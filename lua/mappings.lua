@@ -40,3 +40,11 @@ map({ "n", "i", "v", "t" }, "<A-i>", function()
 end, { desc = "terminal toggle floating term" })
 
 -- >>> Terminal >>>
+
+-- >>> Basic editing >>>
+
+-- Move line up/down
+map("v", "<A-j>", ":m '>+1<CR>gv=gv")
+map("v", "<A-k>", ":m '<-2<CR>gv=gv")
+
+-- >>> Basic editing >>>
