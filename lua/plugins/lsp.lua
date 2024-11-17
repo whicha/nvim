@@ -4,7 +4,7 @@ return {
     "neovim/nvim-lspconfig",
     lazy = false,
     config = function()
-      require "configs.lsp"
+      require "configs.lsp.index"
     end,
   },
 
