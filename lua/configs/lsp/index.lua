@@ -6,3 +6,6 @@ require "configs.lsp.cxx"
 
 -- lua config
 require "configs.lsp.lua_ls"
+
+-- python config
+require "configs.lsp.python"
